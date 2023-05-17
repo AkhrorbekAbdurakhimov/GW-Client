@@ -1,0 +1,71 @@
+.container {
+  font-family: 'Space Grotesk';
+}
+
+header {
+  height: 80px;
+  display: flex;
+  background-color: #ECECF1;
+  font-family: sans-serif;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 4px;
+}
+
+header .logo-part {
+  display: flex;
+  align-items: center;
+}
+
+header .logo-part .logo {
+  width: 60px;
+  margin-left: 15px;
+}
+
+header .logo-part .title {
+  margin-left: 10px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+header .profile {
+  width: 40px;
+}
+
+body {
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
+.sidebar {
+  width: 18%;
+  background-color: #1F1F1F;
+  padding: 20px;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li a.active {
+  color: #a5a5a5;
+}
+
+ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+ul li a:hover {
+  color: #a5a5a5;
+  transition: 0.25s all ease;
+}
+
+ul li a mat-icon {
+  margin-right: 10px;
+}

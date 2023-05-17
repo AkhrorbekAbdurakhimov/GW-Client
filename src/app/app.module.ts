@@ -7,6 +7,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthModule } from './auth/auth.module';
 import { MainPageModule } from './main-page/main-page.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { MyGwModule } from './my-gw/my-gw.module';
+import { RoomModule } from './room/room.module';
 
 import { AuthInterceptor } from './auth/auth.interceptor';
 
@@ -21,6 +24,9 @@ import { AppComponent } from './app.component';
     BrowserModule,
     MatIconModule,
     MainPageModule,
+    DashboardModule,
+    MyGwModule,
+    RoomModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule

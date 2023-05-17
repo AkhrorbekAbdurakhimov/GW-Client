@@ -1,1 +1,45 @@
-<router-outlet></router-outlet>
+<div class=".container">
+  <header>
+    <div class="logo-part">
+      <img src="./../assets/logo-md.png" alt="logo-md" class="logo">
+      <span class="title">{{title}}</span>
+    </div>
+    <mat-icon>notifications_none</mat-icon>
+    <div class="profile-part">
+      <img src="./../assets/avatar.png" alt="profile" class="profile">
+    </div>
+  </header>
+  <body>
+    <div class="sidebar">
+      <ul>
+        <li>
+          <a [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
+            <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/main-page']" [routerLinkActive]="['active']">
+            <mat-icon>list_alt</mat-icon>
+            <span>GW Selection</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/my-gw']" [routerLinkActive]="['active']">
+            <mat-icon>local_library</mat-icon>
+            <span>My GW</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/room']" [routerLinkActive]="['active']">
+            <mat-icon>group</mat-icon>
+            <span>Room</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </body>
+</div>

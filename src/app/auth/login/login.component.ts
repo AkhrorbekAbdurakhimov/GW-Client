@@ -32,7 +32,7 @@ export class LoginComponent {
           this.isLoggedIn = true;
           this.message = data.message;
           setTimeout(() => {
-            this.router.navigateByUrl('/')
+            this.router.navigateByUrl('/main-page')
           }, 500)
         },
         error: error => {
