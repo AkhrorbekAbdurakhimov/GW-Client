@@ -1,7 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthModule } from './auth/auth.module';
+import { MainPageModule } from './main-page/main-page.module';
+
+import { AuthInterceptor } from './auth/auth.interceptor';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -9,10 +17,20 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
+    AuthModule,
     BrowserModule,
-    AppRoutingModule
+    MatIconModule,
+    MainPageModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ 
+    provide: HTTP_INTERCEPTORS, 
+    useClass: AuthInterceptor, 
+    multi: true 
+  }],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="left-side">
+		<img src="./../../../assets/study.svg" alt="signin-image" class="signin-image">
+	</div>
+	<div class="right-side">
+		<form class="form-side" (ngSubmit)="onLogin()" [formGroup]="loginForm" name="loginForm">
+			<h1 class="title">Sign in</h1>
+			<label>
+				<span>Login</span>
+				<input 
+					placeholder="Enter your login" 
+					formControlName="login"
+					matInput
+					required 
+				>
+			</label>
+			<label>
+				<span>Password</span>
+				<input 
+					[type]="hide ? 'password' : 'text'" 
+					placeholder="························" 
+					formControlName="password"
+					matInput
+					required 
+				>
+				<mat-icon (click)="hide = !hide" class="visiblity">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+			</label>
+			<button [ngClass]="{disabled: !loginForm.valid}" type="submit" class="submit-btn">Sign in</button>
+			<p class="status-message" [ngClass]="{success: isLoggedIn}">{{message}}</p>
+		</form>
+	</div>
+</div>
