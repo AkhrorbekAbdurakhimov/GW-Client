@@ -7,6 +7,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { AuthService } from './services/auth.service';
 
@@ -15,20 +16,24 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private router: Router, 
-    private authservice: AuthService
+    private authService: AuthService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.authservice.getToken();
-    if (!token) {
-      this.authservice.logout();
-      this.router.navigateByUrl('login');
-      return next.handle(request);
-    } else {
-      const cloned = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${token}`),
-      });
-      return next.handle(cloned)
-    }
+    const clonedRequest = request.clone({
+      headers: request.headers.set('Authorization', `Bearer ${this.authService.getToken()}`)
+    });
+
+    return next.handle(clonedRequest).pipe(
+      tap(
+        () => {},
+        (error) => {
+          if (error.status === 401 && this.authService.isTokenExpired()) {
+            this.authService.logout();
+            this.router.navigate(['/login']);
+          }
+        }
+      )
+    );
   }
 }

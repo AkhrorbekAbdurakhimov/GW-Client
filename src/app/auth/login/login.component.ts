@@ -24,6 +24,12 @@ export class LoginComponent {
     private authService: AuthService
   ) {}
 
+  ngOnInit() {
+    if (this.authService.getToken()) {
+      this.router.navigate(['/main-page']);
+    }
+  }
+
   onLogin() {
     if (this.loginForm.valid) {
       const { login, password } = this.loginForm.value;

@@ -1,5 +1,5 @@
 <div class=".container">
-  <header>
+  <header *ngIf="showSidebarAndHeader()">
     <div class="logo-part">
       <img src="./../assets/logo-md.png" alt="logo-md" class="logo">
       <span class="title">{{title}}</span>
@@ -10,7 +10,7 @@
     </div>
   </header>
   <body>
-    <div class="sidebar">
+    <div class="sidebar" *ngIf="showSidebarAndHeader()">
       <ul>
         <li>
           <a [routerLink]="['/dashboard']" [routerLinkActive]="['active']">

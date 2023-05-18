@@ -3,6 +3,8 @@ import { tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 import { environment } from './../../../environments/environment';
 
 @Injectable({
@@ -28,6 +30,10 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  isTokenExpired(): boolean {
+    return new JwtHelperService().isTokenExpired(this.getToken());
   }
 
   private setToken(res: any) {
