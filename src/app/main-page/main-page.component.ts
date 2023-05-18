@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Theme } from '../models/theme.modal';
+
+import { MainPageService } from './services/main-page.service';
 
 @Component({
   selector: 'app-main-page',
@@ -6,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
+  themes: Theme[] = [];
 
-}
+  constructor(private mainPageService: MainPageService) {}
+
+  ngOnInit() {
+    this.getThemes();
+  }
+
+  getThemes () {
+    this.mainPageService.getThemes().subscribe({
+      next: (data) => {
+        this.themes = data;
+      }
+    })
+  }
+} 

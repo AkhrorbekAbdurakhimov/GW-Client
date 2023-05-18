@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+
 import { MainPageComponent } from './main-page.component';
 
 @NgModule({
@@ -7,7 +9,8 @@ import { MainPageComponent } from './main-page.component';
     MainPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ]
 })
 export class MainPageModule { }

@@ -1,2 +1,28 @@
-<p>main-page works!</p>
-qwqwqw
+<div class="container">
+  <header>
+    <mat-icon>add_box</mat-icon> 
+  </header>
+  <div class="wrapper">
+    <ul>
+      <li *ngFor="let theme of themes">
+        <div class="title-wrapper">
+          <mat-icon>school</mat-icon>
+          <span>{{theme.title}}</span>
+        </div>
+        <p class="description">{{theme.description}}</p>
+        <p class="created_at">{{theme.createdAt}}</p>
+        <div class="box">
+          <span>advisor</span>
+          <span>{{theme.advisorFullName}}</span>
+          <img src="./../../assets/avatar.png" alt="profile">
+        </div>
+        <div class="box">
+          <span>student</span>
+          <span>{{theme.studentFullName}}</span>
+          <img src="./../../assets/avatar.png" alt="profile">
+        </div>
+        <button>{{theme.status}}</button>
+      </li>
+    </ul>
+  </div>
+</div>
