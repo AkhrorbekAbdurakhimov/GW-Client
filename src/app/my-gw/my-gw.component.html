@@ -1,1 +1,39 @@
-<p>my-gw works!</p>
+<div class="container">
+  <header></header>
+  <body>
+    <ul *ngIf="isTeacher" class="my-list">
+      <li *ngFor="let theme of themes">
+        <div class="icon-wrapper">
+          <mat-icon class="edit">edit</mat-icon>
+          <mat-icon class="delete">delete</mat-icon>
+        </div>
+        <p class="title">{{theme.title}}</p>
+        <p class="description">{{theme.description}}</p>
+        <p class="created-at">{{theme.createdAt}}</p>
+        <div class="progress-bar-container">
+          <div 
+            class="progress-indicator" 
+            [class.done]="state === 'done'"
+            *ngFor="let state of progressStatus[theme.status]; let i = index"
+          >
+            <span class="circle" [class.number]="state === 'not-done'">
+              <mat-icon *ngIf="state === 'done'">check</mat-icon>
+              <span *ngIf="state === 'next'" class="dot"></span>
+              <span *ngIf="state === 'not-done'" class="number">{{i + 1}}</span>
+            </span>
+            <span [class.current]="state === 'next'" class="label">{{labels[i]}}</span>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="profile-part">
+            <img src="./../../assets/avatar.png" alt="avatar">
+            <span>{{theme.studentFullName}}</span>
+          </div>
+          <button *ngIf="theme.status === 'initialized'" class="btn accept">accept</button>
+          <button *ngIf="theme.status === 'initialized'" class="btn decline">decline</button>
+          <button *ngIf="theme.status === 'accepted'" class="btn process">process</button>
+        </div>
+      </li>
+    </ul>
+  </body>
+</div>

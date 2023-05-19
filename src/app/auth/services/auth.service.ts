@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from './../../../environments/environment';
+import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('user') || '{}')
   }
 
   isTokenExpired(): boolean {

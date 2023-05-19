@@ -5,23 +5,29 @@
   <div class="wrapper">
     <ul>
       <li *ngFor="let theme of themes">
-        <div class="title-wrapper">
-          <mat-icon>school</mat-icon>
-          <span>{{theme.title}}</span>
-        </div>
+        <mat-icon class="school">school</mat-icon>
+        <p class="title">{{theme.title}}</p>
         <p class="description">{{theme.description}}</p>
         <p class="created_at">{{theme.createdAt}}</p>
         <div class="box">
-          <span>advisor</span>
-          <span>{{theme.advisorFullName}}</span>
+          <span class="eye">advisor</span>
+          <span class="name">{{theme.advisorFullName}}</span>
           <img src="./../../assets/avatar.png" alt="profile">
         </div>
         <div class="box">
-          <span>student</span>
-          <span>{{theme.studentFullName}}</span>
+          <span class="eye">student</span>
+          <span class="name">{{theme.studentFullName}}</span>
           <img src="./../../assets/avatar.png" alt="profile">
         </div>
-        <button>{{theme.status}}</button>
+        <button 
+         class="btn"
+         [disabled]="['initialized', 'pending', 'accepted', 'declined'].includes(theme.status)"
+         [class.not-selected]="theme.status === 'not-selected'"
+         [class.initialized]="theme.status === 'initialized'"
+         [class.pending]="theme.status === 'pending'"
+         [class.accepted]="theme.status === 'accepted'"
+         [class.declined]="theme.status === 'declined'"
+        >{{theme.status}}</button>
       </li>
     </ul>
   </div>

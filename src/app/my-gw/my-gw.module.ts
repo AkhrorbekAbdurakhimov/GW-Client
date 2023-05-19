@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+
 import { MyGwComponent } from './my-gw.component';
 
 
@@ -9,7 +11,8 @@ import { MyGwComponent } from './my-gw.component';
     MyGwComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ]
 })
 export class MyGwModule { }
