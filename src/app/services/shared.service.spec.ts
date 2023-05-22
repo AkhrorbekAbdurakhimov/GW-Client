@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MyGwService } from './my-gw.service';
+import { SharedService } from './shared.service';
 
-describe('MyGwService', () => {
-  let service: MyGwService;
+describe('SharedService', () => {
+  let service: SharedService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MyGwService);
+    service = TestBed.inject(SharedService);
   });
 
   it('should be created', () => {

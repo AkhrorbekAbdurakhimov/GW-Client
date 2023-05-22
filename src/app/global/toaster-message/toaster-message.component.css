@@ -1,0 +1,22 @@
+.toaster-message {
+  width: 500px;
+  border-radius: 5px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 15px;
+  background-color: green;
+  font-size: 20px;
+  color: white;
+  transform: translateX(calc(100% + 20px));
+  transition: transform 1s ease;
+}
+
+.toaster-message-active {
+  transform: translate(0);
+  transition: transform 1s ease;
+}
+
+.toaster-message-warning {
+  background-color: #F7B217;
+}

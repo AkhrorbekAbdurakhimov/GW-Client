@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
-import { MyGwService } from './services/my-gw.service';
 import { AuthService } from '../auth/services/auth.service';
+
+import { GwService } from './../services/gw.service';
+import { SharedService } from './../services/shared.service';
 
 import { User } from '../models/user.model';
 import { Theme } from '../models/theme.modal';
@@ -36,7 +38,8 @@ export class MyGwComponent {
 
   constructor(
     private authService: AuthService,
-    private myGwService: MyGwService,
+    private gwService: GwService,
+    private sharedService: SharedService,
   ) {
     this.user = this.authService.getUser();
   }
@@ -49,16 +52,19 @@ export class MyGwComponent {
       this.isStudent = true;
     }
       
-    this.getThemes(this.user.id, this.user.role);
+    this.getThemes();
 
   }
 
-  getThemes(id: number, role: string) {
-    return this.myGwService.getThemesById(id, role).subscribe({
+  getThemes() {
+    return this.gwService.getThemesById().subscribe({
       next: (data) => {
         this.themes = data;
       }
     })
   }
 
+  openAddThemeModal() {
+    this.sharedService.changeAddThemeModalStatus(true);
+  }
 }

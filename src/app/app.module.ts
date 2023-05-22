@@ -15,11 +15,13 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ToasterMessageComponent } from './global/toaster-message/toaster-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ToasterMessageComponent
   ],
   imports: [
     AuthModule,

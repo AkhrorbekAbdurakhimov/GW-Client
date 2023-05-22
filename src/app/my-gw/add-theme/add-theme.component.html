@@ -1,0 +1,26 @@
+<div class="container" [class.active]="addThemeModalStatus">
+  <div class="add-theme-modal">
+    <header>
+      <span>Add graduation work</span>
+      <mat-icon (click)="closeAddThemeModal()">close</mat-icon>
+    </header>
+    <form 
+      class="add-theme-form"
+      (ngSubmit)="addTheme()"
+      [formGroup]="addThemeForm"
+    >
+      <label>
+        <span>Title: </span>
+        <input type="text" formControlName="title">
+      </label>
+      <label>
+        <span>Description: </span>
+        <textarea formControlName="description"></textarea>
+      </label>
+      <div class="buttons-wrapper">
+        <button class="cancel-btn" type="cancel" (click)="closeAddThemeModal()">Cancel</button>
+        <button class="save-btn" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

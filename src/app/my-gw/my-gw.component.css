@@ -6,7 +6,17 @@
 
 header {
   height: 50px;
-  border: 1px solid red;
+  display: flex;
+  align-items: center;
+}
+
+header mat-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 20px;
 }
 
 body {
@@ -37,15 +47,16 @@ ul li {
   position: absolute;
   right: 20px;
   justify-content: space-between;
-  cursor: pointer;
 }
 
 .edit {
   color: green;
+  cursor: pointer;
 }
 
 .delete {
   color: red;
+  cursor: pointer;
 }
 
 ul li:last-child {
@@ -78,6 +89,7 @@ ul li:last-child {
   width: 80%;
   height: 40px;
   margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 .progress-indicator {
@@ -153,7 +165,6 @@ mat-icon {
 .profile-part {
   border: 2px solid transparent;
   position: relative;
-  margin-top: 45px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -164,6 +175,7 @@ mat-icon {
   z-index: 9;
   width: 30%;
   margin-right: auto;
+  margin-top: 15px;
 }
 
 

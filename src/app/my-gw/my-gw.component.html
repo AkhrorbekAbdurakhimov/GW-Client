@@ -1,5 +1,7 @@
 <div class="container">
-  <header></header>
+  <header>
+    <mat-icon (click)="openAddThemeModal()">add_box</mat-icon> 
+  </header>
   <body>
     <ul *ngIf="isTeacher" class="my-list">
       <li *ngFor="let theme of themes">
@@ -25,7 +27,7 @@
           </div>
         </div>
         <div class="wrapper">
-          <div class="profile-part">
+          <div class="profile-part" *ngIf="theme.studentFullName">
             <img src="./../../assets/avatar.png" alt="avatar">
             <span>{{theme.studentFullName}}</span>
           </div>
@@ -37,3 +39,6 @@
     </ul>
   </body>
 </div>
+<app-add-theme
+  (getThemes)="getThemes()"
+></app-add-theme>
