@@ -16,12 +16,14 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToasterMessageComponent } from './global/toaster-message/toaster-message.component';
+import { VerifyModalComponent } from './global/verify-modal/verify-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    ToasterMessageComponent
+    ToasterMessageComponent,
+    VerifyModalComponent
   ],
   imports: [
     AuthModule,

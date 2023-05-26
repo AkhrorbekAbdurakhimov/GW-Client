@@ -1,12 +1,19 @@
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
+import { Theme } from '../models/theme.model';
+import { Verify } from '../models/verify.model';
+
+import { GwService } from './gw.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
   private addThemeModalStatusSource = new BehaviorSubject<boolean>(false);
+  private verifyModalSource = new BehaviorSubject<Verify>({ status: false, message: '', id: 0, type: '' });
+  private themesSource = new BehaviorSubject<Theme[]>([])
 
   // toaster message
   private toasterMessageStatusSource = new BehaviorSubject<boolean>(false);
@@ -14,16 +21,24 @@ export class SharedService {
   private isWarningSource = new BehaviorSubject<boolean>(false);
 
   addThemeModalStatus = this.addThemeModalStatusSource.asObservable();
+  verifyModal = this.verifyModalSource.asObservable();
+  themes = this.themesSource.asObservable();
 
   // toaster message
   toasterMessageStatus = this.toasterMessageStatusSource.asObservable();
   toasterMessage = this.toasterMessageSource.asObservable();
   isWarning = this.isWarningSource.asObservable();
 
-  constructor() { }
+  constructor(
+    public gwService: GwService
+  ) { }
 
   changeAddThemeModalStatus(status: boolean) {
     this.addThemeModalStatusSource.next(status);
+  }
+
+  changeVerifyModal(status: boolean, message: string, id: number, type: string) {
+    this.verifyModalSource.next({status, message, id, type})
   }
 
   changeToasterMessageStatus(status: boolean) {
@@ -36,5 +51,13 @@ export class SharedService {
 
   changeIsWarning(status: boolean) {
     this.isWarningSource.next(status)
+  }
+
+  getThemesById() {
+    this.gwService.getThemesById().subscribe({
+      next: (data) => {
+        this.themesSource.next(data)
+      }
+    })
   }
 }

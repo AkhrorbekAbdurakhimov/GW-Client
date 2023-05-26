@@ -1,0 +1,12 @@
+<div class="container" [class.active]="details.status">
+  <div class="verify-modal">
+    <header>
+      <span>{{details.message}}</span>
+      <mat-icon (click)="closeVerifyModal()">close</mat-icon>
+    </header>
+    <div class="buttons-wrapper">
+      <button class="cancel-btn" type="cancel" (click)="closeVerifyModal()">Cancel</button>
+      <button class="save-btn" type="submit" (click)="verify()">Verify</button>
+    </div>
+  </div>
+</div>

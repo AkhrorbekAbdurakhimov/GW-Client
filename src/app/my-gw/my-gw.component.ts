@@ -6,7 +6,7 @@ import { GwService } from './../services/gw.service';
 import { SharedService } from './../services/shared.service';
 
 import { User } from '../models/user.model';
-import { Theme } from '../models/theme.modal';
+import { Theme } from '../models/theme.model';
 
 @Component({
   selector: 'app-my-gw',
@@ -16,6 +16,8 @@ import { Theme } from '../models/theme.modal';
 export class MyGwComponent {
   isTeacher: boolean = false;
   isStudent: boolean = false;
+
+  message: string = 'Delete Theme';
 
   user: User = {
     id: 0,
@@ -52,19 +54,19 @@ export class MyGwComponent {
       this.isStudent = true;
     }
       
-    this.getThemes();
+    this.sharedService
+      .themes
+      .subscribe(data => this.themes = data);
 
-  }
+    this.sharedService.getThemesById()
 
-  getThemes() {
-    return this.gwService.getThemesById().subscribe({
-      next: (data) => {
-        this.themes = data;
-      }
-    })
   }
 
   openAddThemeModal() {
     this.sharedService.changeAddThemeModalStatus(true);
+  }
+
+  deleteTheme(themeId: number) {
+    this.sharedService.changeVerifyModal(true, this.message, themeId, 'deleteTheme');
   }
 }

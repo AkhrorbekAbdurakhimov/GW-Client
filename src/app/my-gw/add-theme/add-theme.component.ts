@@ -12,8 +12,6 @@ import { SharedService } from '../../services/shared.service';
 })
 export class AddThemeComponent {
 
-  @Output() getThemes: EventEmitter<any> = new EventEmitter();
-
   addThemeModalStatus: boolean = false;
   addThemeForm = this.fb.group({
     title: ['', [Validators.required]],
@@ -45,7 +43,7 @@ export class AddThemeComponent {
           this.sharedService.changeToasterMessageStatus(true);
           this.sharedService.changeToasterMessage(data.message);
           this.sharedService.changeAddThemeModalStatus(false);
-          this.getThemes.emit();
+          this.sharedService.getThemesById()
           setTimeout(() => {
             this.sharedService.changeToasterMessageStatus(false);
           }, 1500)
@@ -53,5 +51,7 @@ export class AddThemeComponent {
       })
       
     }
+
+    this.addThemeForm.reset();
   }
 }

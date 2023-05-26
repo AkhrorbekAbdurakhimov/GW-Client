@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Theme } from '../models/theme.modal';
+import { Theme } from '../models/theme.model';
 
 import { MainPageService } from './services/main-page.service';
 

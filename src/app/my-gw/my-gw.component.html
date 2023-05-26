@@ -7,7 +7,7 @@
       <li *ngFor="let theme of themes">
         <div class="icon-wrapper">
           <mat-icon class="edit">edit</mat-icon>
-          <mat-icon class="delete">delete</mat-icon>
+          <mat-icon class="delete" (click)="deleteTheme(theme.id)">delete</mat-icon>
         </div>
         <p class="title">{{theme.title}}</p>
         <p class="description">{{theme.description}}</p>
@@ -39,6 +39,4 @@
     </ul>
   </body>
 </div>
-<app-add-theme
-  (getThemes)="getThemes()"
-></app-add-theme>
+<app-add-theme></app-add-theme>

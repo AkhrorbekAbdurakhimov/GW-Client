@@ -41,4 +41,9 @@ export class GwService {
     return this.http
       .post<any>(`${environment.apiUrl}/themes/create`, payload)
   }
+
+  deleteTheme(themeId: number) {
+    return this.http
+      .delete<any>(`${environment.apiUrl}/themes/${themeId}`);
+  }
 }

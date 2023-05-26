@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
+import { Theme } from './models/theme.model';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +11,12 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = 'GW-SHARE';
   currentRoute: string = '';
+
+  themes: Theme[] = [];
   
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
