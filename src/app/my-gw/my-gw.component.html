@@ -18,12 +18,12 @@
             [class.done]="state === 'done'"
             *ngFor="let state of progressStatus[theme.status]; let i = index"
           >
-            <span class="circle" [class.number]="state === 'not-done'">
-              <mat-icon *ngIf="state === 'done'">check</mat-icon>
+            <span class="circle" [class.number]="state === 'not-done'" [class.declined]="theme.status === 'declined' && i === 3">
+              <mat-icon *ngIf="state === 'done'">{{theme.status === 'declined' && i === 3 ? 'close' : 'check'}}</mat-icon>
               <span *ngIf="state === 'next'" class="dot"></span>
               <span *ngIf="state === 'not-done'" class="number">{{i + 1}}</span>
             </span>
-            <span [class.current]="state === 'next'" class="label">{{labels[i]}}</span>
+            <span [class.current]="state === 'next'" class="label">{{theme.status === 'declined' && i === 3 ? labels[4] : labels[i]}}</span>
           </div>
         </div>
         <div class="wrapper">
@@ -31,12 +31,16 @@
             <img src="./../../assets/avatar.png" alt="avatar">
             <span>{{theme.studentFullName}}</span>
           </div>
-          <button *ngIf="theme.status === 'initialized'" class="btn accept">accept</button>
-          <button *ngIf="theme.status === 'initialized'" class="btn decline">decline</button>
-          <button *ngIf="theme.status === 'accepted'" class="btn process">process</button>
+          <button *ngIf="theme.status === 'pending'" class="btn accept" (click)="pending(theme.processId, 'accepted')">accept</button>
+          <button *ngIf="theme.status === 'pending'" class="btn decline" (click)="pending(theme.processId, 'declined')">decline</button>
+          <button *ngIf="theme.status === 'accepted'" class="btn process" (click)="process()">process</button>
         </div>
+        <div class="upper" [class.initialized]="theme.status === 'initialized'" (click)="pending(theme.processId, 'pending')"></div>
       </li>
     </ul>
+    <div *ngIf="isTeacher" class="right-box">
+      <p>You can choose 4 students for being advisor and your own graduation themes can not be higher from this number with suggested graduation theme by students</p>
+    </div>
   </body>
 </div>
 <app-add-theme></app-add-theme>

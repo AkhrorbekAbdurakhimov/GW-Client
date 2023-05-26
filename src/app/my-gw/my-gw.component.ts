@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 import { AuthService } from '../auth/services/auth.service';
@@ -30,17 +31,19 @@ export class MyGwComponent {
   themes: Theme[] = [];
 
   progressStatus: any = {
-    'not-selected': ['done', 'next', 'not-done', 'not-done'],
-    'initialized': ['done', 'done', 'next', 'not-done'],
-    'pending': ['done', 'done', 'done', 'next'],
-    'accepted': ['done', 'done', 'done', 'done']
+    'not-selected': ['next', 'not-done', 'not-done', 'not-done'],
+    'initialized': ['done', 'next', 'not-done', 'not-done'],
+    'pending': ['done', 'done', 'next', 'not-done'],
+    'accepted': ['done', 'done', 'done', 'done'],
+    'declined': ['done', 'done', 'done', 'done']
   }
 
-  labels: string[] = ['not-selected', 'initialized', 'pending', 'accepted'] 
+  labels: string[] = ['not-selected', 'initialized', 'pending', 'accepted', 'declined'] 
 
   constructor(
-    private authService: AuthService,
+    private router: Router,
     private gwService: GwService,
+    private authService: AuthService,
     private sharedService: SharedService,
   ) {
     this.user = this.authService.getUser();
@@ -53,13 +56,12 @@ export class MyGwComponent {
     } else if (this.user.role === 'student') {
       this.isStudent = true;
     }
+
+    this.sharedService.getThemesById()
       
     this.sharedService
       .themes
       .subscribe(data => this.themes = data);
-
-    this.sharedService.getThemesById()
-
   }
 
   openAddThemeModal() {
@@ -68,5 +70,17 @@ export class MyGwComponent {
 
   deleteTheme(themeId: number) {
     this.sharedService.changeVerifyModal(true, this.message, themeId, 'deleteTheme');
+  }
+
+  pending(processId: number, status: string) {
+    this.gwService.updateProcessStatus(processId, status).subscribe({
+      next: data => {
+        this.sharedService.getThemesById()
+      }
+    })
+  }
+
+  process() {
+    this.router.navigateByUrl("/workspace")
   }
 }

@@ -6,33 +6,35 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthModule } from './auth/auth.module';
+import { RoomModule } from './room/room.module';
+import { MyGwModule } from './my-gw/my-gw.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { MyGwModule } from './my-gw/my-gw.module';
-import { RoomModule } from './room/room.module';
+import { WorkspaceModule } from './workspace/workspace.module';
 
 import { AuthInterceptor } from './auth/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ToasterMessageComponent } from './global/toaster-message/toaster-message.component';
 import { VerifyModalComponent } from './global/verify-modal/verify-modal.component';
+import { ToasterMessageComponent } from './global/toaster-message/toaster-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    VerifyModalComponent,
     ToasterMessageComponent,
-    VerifyModalComponent
   ],
   imports: [
+    MyGwModule,
+    RoomModule,
     AuthModule,
     BrowserModule,
     MatIconModule,
     MainPageModule,
     DashboardModule,
-    MyGwModule,
-    RoomModule,
+    WorkspaceModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule

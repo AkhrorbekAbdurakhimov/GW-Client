@@ -21,7 +21,7 @@ header mat-icon {
 
 body {
   height: calc(100% - 50px);
-  overflow: scroll;
+  display: flex;
 }
 
 ul {
@@ -29,6 +29,7 @@ ul {
   display: flex;
   flex-direction: column;
   width: 80%;
+  overflow: scroll;
 }
 
 ul li {
@@ -39,6 +40,23 @@ ul li {
   border: 1px solid rgb(20, 19, 19);
   box-shadow: 0px 0px 2px 2px #0000001e inset;
   position: relative;
+}
+
+.upper {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  background-color: #ffffff96;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.initialized {
+  display: block;
 }
 
 .icon-wrapper {
@@ -120,6 +138,10 @@ ul li:last-child {
   background-color: green;
   justify-content: center;
   border: 6px solid #DFDFDF;
+}
+
+.declined {
+  background-color: red;
 }
 
 .dot {
@@ -223,4 +245,12 @@ mat-icon {
 
 .process {
   background-color: #03133f;
+}
+
+.right-box {
+  width: 20%;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

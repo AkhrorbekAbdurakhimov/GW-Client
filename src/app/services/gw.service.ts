@@ -26,6 +26,8 @@ export class GwService {
     private authService: AuthService,
   ) {
     this.user = this.authService.getUser();
+    console.log(this.user);
+    
   }
 
   getThemesById() {
@@ -39,11 +41,18 @@ export class GwService {
       payload.advisorId = advisorId
     }
     return this.http
-      .post<any>(`${environment.apiUrl}/themes/create`, payload)
+      .post<any>(`${environment.apiUrl}/themes/`, payload)
   }
 
   deleteTheme(themeId: number) {
     return this.http
       .delete<any>(`${environment.apiUrl}/themes/${themeId}`);
+  }
+
+  updateProcessStatus(processId: number, status: string) {
+    return this.http
+      .patch<any>(`${environment.apiUrl}/themes/status/${processId}`, {
+        status
+      });
   }
 }

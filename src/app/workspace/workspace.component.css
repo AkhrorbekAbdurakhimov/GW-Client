@@ -1,0 +1,64 @@
+.container {
+  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.timer, .date {
+  font-size: 20px;
+}
+
+.timer {
+  text-align: right;
+}
+
+.timer span, .date span {
+  color: #ad7203;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #42526E;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 18px;
+  color: #000;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 3;
+  border-left: 1px solid #000;
+  padding-left: 10px;
+}
+
+.right p {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.right p mat-icon {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.right img {
+  width: 100%;
+}

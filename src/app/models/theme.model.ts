@@ -1,6 +1,7 @@
 export class Theme {
   constructor(
     public id: number,
+    public processId: number,
     public title: string,
     public description: string,
     public createdAt: Date,
