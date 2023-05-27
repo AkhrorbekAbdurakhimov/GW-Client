@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Theme } from '../models/theme.model';
 
-import { MainPageService } from './services/main-page.service';
+import { SharedService } from '../services/shared.service';
+import { AuthService } from '../auth/services/auth.service';
+
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-main-page',
@@ -10,18 +13,43 @@ import { MainPageService } from './services/main-page.service';
 })
 export class MainPageComponent {
   themes: Theme[] = [];
+  message: string = 'Select this graduation work';
 
-  constructor(private mainPageService: MainPageService) {}
+  isTeacher: boolean = false;
+  isStudent: boolean = false;
 
-  ngOnInit() {
-    this.getThemes();
+  user: User = {
+    id: 0,
+    username: '',
+    role: '',
+    avatar: '',
+    full_name: '',
+    created_at: new Date(),
+  };
+
+  constructor(
+    private authService: AuthService,
+    private sharedService: SharedService,
+  ) {
+    this.user = this.authService.getUser();
   }
 
-  getThemes () {
-    this.mainPageService.getThemes().subscribe({
-      next: (data) => {
-        this.themes = data;
-      }
-    })
+  ngOnInit() {
+
+    if (this.user.role === 'teacher') {
+      this.isTeacher = true; 
+    } else if (this.user.role === 'student') {
+      this.isStudent = true;
+    }
+
+    this.sharedService.getThemes()
+
+    this.sharedService
+      .themes
+      .subscribe(data => this.themes = data);
+  }
+
+  selectGW(processId: number) {
+    this.sharedService.changeVerifyModal(true, this.message, processId, 'Select')
   }
 } 

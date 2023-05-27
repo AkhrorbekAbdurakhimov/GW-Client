@@ -13,6 +13,7 @@ export class SharedService {
 
   private addThemeModalStatusSource = new BehaviorSubject<boolean>(false);
   private verifyModalSource = new BehaviorSubject<Verify>({ status: false, message: '', id: 0, type: '' });
+  private uThemesSource = new BehaviorSubject<Theme[]>([])
   private themesSource = new BehaviorSubject<Theme[]>([])
 
   // toaster message
@@ -22,6 +23,7 @@ export class SharedService {
 
   addThemeModalStatus = this.addThemeModalStatusSource.asObservable();
   verifyModal = this.verifyModalSource.asObservable();
+  uthemes = this.uThemesSource.asObservable();
   themes = this.themesSource.asObservable();
 
   // toaster message
@@ -55,6 +57,14 @@ export class SharedService {
 
   getThemesById() {
     this.gwService.getThemesById().subscribe({
+      next: (data) => {
+        this.uThemesSource.next(data)
+      }
+    })
+  }
+
+  getThemes() {
+    this.gwService.getThemes().subscribe({
       next: (data) => {
         this.themesSource.next(data)
       }

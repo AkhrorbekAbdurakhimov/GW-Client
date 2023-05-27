@@ -13,20 +13,24 @@
           <span class="name">{{theme.advisorFullName}}</span>
           <img src="./../../assets/avatar.png" alt="profile">
         </div>
-        <div class="box">
+        <div class="box" *ngIf="theme.studentFullName">
           <span class="eye">student</span>
           <span class="name">{{theme.studentFullName}}</span>
           <img src="./../../assets/avatar.png" alt="profile">
         </div>
+        <p class="not-attached" *ngIf="!theme.studentFullName">No attached user</p>
         <button 
          class="btn"
-         [disabled]="['initialized', 'pending', 'accepted', 'declined'].includes(theme.status)"
-         [class.not-selected]="theme.status === 'not-selected'"
+         [title]="isStudent && theme.status === 'not-selected' ? 'select this theme' : ''"
+         [disabled]="['initialized', 'pending', 'accepted', 'declined'].includes(theme.status) || isTeacher"
+         [class.select]="theme.status === 'not-selected' && isStudent"
+         [class.not-selected]="theme.status === 'not-selected' && isTeacher"
          [class.initialized]="theme.status === 'initialized'"
          [class.pending]="theme.status === 'pending'"
          [class.accepted]="theme.status === 'accepted'"
          [class.declined]="theme.status === 'declined'"
-        >{{theme.status}}</button>
+         (click)="selectGW(theme.processId)"
+        >{{isStudent && theme.status === 'not-selected' ? 'select' : theme.status}}</button>
       </li>
     </ul>
   </div>

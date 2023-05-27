@@ -60,7 +60,7 @@ export class MyGwComponent {
     this.sharedService.getThemesById()
       
     this.sharedService
-      .themes
+      .uthemes
       .subscribe(data => this.themes = data);
   }
 
@@ -69,7 +69,7 @@ export class MyGwComponent {
   }
 
   deleteTheme(themeId: number) {
-    this.sharedService.changeVerifyModal(true, this.message, themeId, 'deleteTheme');
+    this.sharedService.changeVerifyModal(true, this.message, themeId, 'Delete');
   }
 
   pending(processId: number, status: string) {

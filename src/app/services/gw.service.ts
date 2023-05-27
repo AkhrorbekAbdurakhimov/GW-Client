@@ -30,6 +30,11 @@ export class GwService {
     
   }
 
+  getThemes () {
+    return this.http
+      .get<any>(`${environment.apiUrl}/themes/list`)
+  }
+
   getThemesById() {
     return this.http
       .get<any>(`${environment.apiUrl}/themes/list?${this.user.role}Id=${this.user.id}`);
@@ -53,6 +58,13 @@ export class GwService {
     return this.http
       .patch<any>(`${environment.apiUrl}/themes/status/${processId}`, {
         status
+      });
+  }
+
+  bindStudentToGw (processId: number) {
+    return this.http
+      .post<any>(`${environment.apiUrl}/themes/bind`, {
+        processId
       });
   }
 }

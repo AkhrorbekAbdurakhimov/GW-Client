@@ -27,6 +27,7 @@ ul li {
   position: relative;
   list-style-type: none;
   margin-right: calc(4%/3);
+  margin-bottom: 25px;
   border-radius: 10px;
   z-index: 9;
   padding: 0 10px 10px;
@@ -85,6 +86,11 @@ ul li:nth-child(4n) {
   z-index: 9;
 }
 
+.not-attached {
+  margin-top: 20px;
+  font-size: 19px;
+}
+
 .box:hover {
   border: 2px solid #000;
   transition: 1s ease all;
@@ -129,25 +135,30 @@ ul li:nth-child(4n) {
 }
 
 .accepted {
-  background-color: green;
+  background-color: rgba(0, 128, 0, 0.5);
   cursor: not-allowed;
 }
 
 .declined {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.5);
   cursor: not-allowed;
 }
 
 .pending {
-  background-color: #c96b13;
+  background-color: rgba(201, 107, 19, 0.5);
   cursor: not-allowed;
 }
 
+.select {
+  background-color: rgba(3, 19, 63);
+}
+
 .not-selected {
-  background-color: #03133f;
+  background-color: rgba(3, 19, 63, 0.5);
+  cursor: not-allowed;
 }
 
 .initialized {
-  background-color: blue;
+  background-color: rgba(0, 0, 255, 0.5);
   cursor: not-allowed;
 }

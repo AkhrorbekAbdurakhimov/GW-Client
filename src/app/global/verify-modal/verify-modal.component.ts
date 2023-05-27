@@ -35,7 +35,8 @@ export class VerifyModalComponent {
   }
 
   verify() {
-    if (this.details.type === 'deleteTheme') {
+    console.log(this.details);
+    if (this.details.type === 'Delete') {
       this.gwService.deleteTheme(this.details.id).subscribe({
         next: data => {
           this.sharedService.changeVerifyModal(false, '', 0, '');
@@ -43,6 +44,19 @@ export class VerifyModalComponent {
           this.sharedService.changeToasterMessage(data.message);
           this.sharedService.changeAddThemeModalStatus(false);
           this.sharedService.getThemesById();
+          setTimeout(() => {
+            this.sharedService.changeToasterMessageStatus(false);
+          }, 1500)
+        }
+      })
+    }
+    if (this.details.type === 'Select') {
+      this.gwService.bindStudentToGw(this.details.id).subscribe({
+        next: data => {
+          this.sharedService.changeVerifyModal(false, '', 0, '');
+          this.sharedService.changeToasterMessageStatus(true);
+          this.sharedService.changeToasterMessage(data.message);
+          this.sharedService.getThemes();
           setTimeout(() => {
             this.sharedService.changeToasterMessageStatus(false);
           }, 1500)
