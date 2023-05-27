@@ -63,8 +63,8 @@ export class SharedService {
     })
   }
 
-  getThemes() {
-    this.gwService.getThemes().subscribe({
+  getThemes(statusId: number) {
+    this.gwService.getThemes(statusId).subscribe({
       next: (data) => {
         this.themesSource.next(data)
       }

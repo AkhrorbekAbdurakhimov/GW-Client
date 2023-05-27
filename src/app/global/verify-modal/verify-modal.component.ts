@@ -56,7 +56,7 @@ export class VerifyModalComponent {
           this.sharedService.changeVerifyModal(false, '', 0, '');
           this.sharedService.changeToasterMessageStatus(true);
           this.sharedService.changeToasterMessage(data.message);
-          this.sharedService.getThemes();
+          this.sharedService.getThemes(0);
           setTimeout(() => {
             this.sharedService.changeToasterMessageStatus(false);
           }, 1500)

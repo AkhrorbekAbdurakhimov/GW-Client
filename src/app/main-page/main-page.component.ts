@@ -5,6 +5,8 @@ import { SharedService } from '../services/shared.service';
 import { AuthService } from '../auth/services/auth.service';
 
 import { User } from '../models/user.model';
+import { Status } from '../models/status.model';
+import { GwService } from '../services/gw.service';
 
 @Component({
   selector: 'app-main-page',
@@ -13,6 +15,7 @@ import { User } from '../models/user.model';
 })
 export class MainPageComponent {
   themes: Theme[] = [];
+  statuses: Status[] = [];
   message: string = 'Select this graduation work';
 
   isTeacher: boolean = false;
@@ -24,10 +27,12 @@ export class MainPageComponent {
     role: '',
     avatar: '',
     full_name: '',
+    capacity: 0,
     created_at: new Date(),
   };
 
   constructor(
+    private gwService: GwService,
     private authService: AuthService,
     private sharedService: SharedService,
   ) {
@@ -42,14 +47,29 @@ export class MainPageComponent {
       this.isStudent = true;
     }
 
-    this.sharedService.getThemes()
+    this.sharedService.getThemes(0);
 
     this.sharedService
       .themes
       .subscribe(data => this.themes = data);
+
+    this.getStatuses()
   }
 
   selectGW(processId: number) {
     this.sharedService.changeVerifyModal(true, this.message, processId, 'Select')
+  }
+
+  getStatuses() {
+    this.gwService.getStatusesList().subscribe({
+      next: data => {
+        this.statuses = data
+      }
+    })
+  }
+
+  filterThemes(target: EventTarget | null) {
+    const selected = (target as HTMLSelectElement).value;
+    this.sharedService.getThemes(Number(selected));
   }
 } 

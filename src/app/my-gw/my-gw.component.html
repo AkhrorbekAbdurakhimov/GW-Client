@@ -1,6 +1,12 @@
 <div class="container">
   <header>
-    <mat-icon (click)="openAddThemeModal()">add_box</mat-icon> 
+    <button 
+      (click)="openAddThemeModal()"
+      [disabled]="themes.length >= user.capacity"
+      [class.disabled]="themes.length >= user.capacity"
+    >
+      <mat-icon>add_box</mat-icon> 
+    </button>
   </header>
   <body>
     <ul *ngIf="isTeacher" class="my-list">
@@ -40,6 +46,8 @@
     </ul>
     <div *ngIf="isTeacher" class="right-box">
       <p>You can choose 4 students for being advisor and your own graduation themes can not be higher from this number with suggested graduation theme by students</p>
+      <hr>
+      <p class="warning-label">The number of themes: <span>{{themes.length}}</span></p>
     </div>
   </body>
 </div>

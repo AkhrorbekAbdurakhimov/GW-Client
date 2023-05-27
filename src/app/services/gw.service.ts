@@ -18,6 +18,7 @@ export class GwService {
     role: '',
     avatar: '',
     full_name: '',
+    capacity: 0,
     created_at: new Date(),
   };
 
@@ -26,16 +27,20 @@ export class GwService {
     private authService: AuthService,
   ) {
     this.user = this.authService.getUser();
-    console.log(this.user);
-    
   }
 
-  getThemes () {
+  getThemes (statusId: number) {
     return this.http
-      .get<any>(`${environment.apiUrl}/themes/list`)
+      .get<any>(`${environment.apiUrl}/themes/list${statusId ? `?statusId=${statusId}` : ''}`)
+  }
+
+  getStatusesList () {
+    return this.http
+      .get<any>(`${environment.apiUrl}/themes/status/list`)
   }
 
   getThemesById() {
+    console.log();
     return this.http
       .get<any>(`${environment.apiUrl}/themes/list?${this.user.role}Id=${this.user.id}`);
   }

@@ -26,6 +26,7 @@ export class MyGwComponent {
     role: '',
     avatar: '',
     full_name: '',
+    capacity: 0,
     created_at: new Date(),
   };
   themes: Theme[] = [];

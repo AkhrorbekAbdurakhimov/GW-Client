@@ -10,13 +10,21 @@ header {
   align-items: center;
 }
 
-header mat-icon {
+header button {
   width: 32px;
   height: 32px;
-  font-size: 30px;
   cursor: pointer;
   margin-left: auto;
   margin-right: 20px;
+  display: block;
+  border: none;
+  background: none;
+}
+
+header button mat-icon {
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
 }
 
 body {
@@ -85,6 +93,8 @@ ul li:last-child {
   font-size: 20px;
   font-weight: bold;
   text-indent: 30px;
+  width: 90%;
+  line-height: 28px;
 }
 
 .description {
@@ -253,4 +263,17 @@ mat-icon {
   font-size: 18px;
   line-height: 24px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.warning-label {
+  margin-top: 10px;
+}
+
+.warning-label span {
+  color: red;
+}
+
+header .disabled {
+  cursor: not-allowed;
+  color: #333232a4
 }
