@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { RoomModule } from './room/room.module';
 import { MyGwModule } from './my-gw/my-gw.module';
 import { ProfileModule } from './profile/profile.module';
+import { SettingsModule } from './settings/settings.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { WorkspaceModule } from './workspace/workspace.module';
@@ -40,6 +41,7 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     BrowserModule,
     MatIconModule,
     MainPageModule,
+    SettingsModule,
     DashboardModule,
     WorkspaceModule,
     AppRoutingModule,

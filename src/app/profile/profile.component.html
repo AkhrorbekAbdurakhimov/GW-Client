@@ -24,6 +24,10 @@
       <span class="label">User Position: </span>
       <span class="value">{{user.position}}</span>
     </p>
+    <p>
+      <span class="label">Joined At: </span>
+      <span class="value">{{user.joinedAt}}</span>
+    </p>
     <a *ngIf="user.role === 'student'" [href]="user.linkedin" class="linkedin">
       <fa-icon [icon]="linkedinIcon"></fa-icon>
       <span>Student linkedin account</span>

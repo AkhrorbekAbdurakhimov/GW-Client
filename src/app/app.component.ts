@@ -50,16 +50,12 @@ export class AppComponent {
     });
   }
 
-  closeProfileModal() {
-    console.log('hi');
-    this.isProfileModal = false;
-  }
-
-  openProfileModal() {
-    this.isProfileModal = true;
-  }
-
   showSidebarAndHeader(): boolean {
     return this.currentRoute !== '/not-found' && this.currentRoute !== '/login';
+  }
+
+  logout() {
+    this.authService.logout();
+    this.isProfileModal = false;
   }
 }

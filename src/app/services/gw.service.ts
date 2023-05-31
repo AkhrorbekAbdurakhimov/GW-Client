@@ -34,6 +34,11 @@ export class GwService {
     this.user = this.authService.getUser();
   }
 
+  getUsers (roleId: number) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/admin/users/${roleId}`)
+  }
+
   getThemes (statusId: number) {
     return this.http
       .get<any>(`${environment.apiUrl}/themes/list${statusId ? `?statusId=${statusId}` : ''}`)

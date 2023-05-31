@@ -1,0 +1,43 @@
+<div class="container">
+  <p class="title">All Users List</p>
+  <div class="functions-part">
+    <fa-icon [icon]="addIcon" class="add-icon" title="add user"></fa-icon>
+  </div>
+  <table>
+    <tr>
+      <td>
+        <div class="img-wrapper">
+          <fa-icon [icon]="avatarIcon" class="avatar"></fa-icon>
+        </div>
+      </td>
+      <td>username</td>
+      <td>fullName</td>
+      <td>status</td>
+      <td>position</td>
+      <td><fa-icon [icon]="joinedDateIcon" class="calendar"></fa-icon> joined datetime</td>
+      <td>gpa</td>
+      <td>faculty</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>
+        <div class="img-wrapper">
+          <img src="./../../assets/avatar.png" width="40px" alt="avatar">
+        </div>
+      </td>
+      <td>{{user.username}}</td>
+      <td>{{user.fullName}}</td>
+      <td>{{user.role}}</td>
+      <td>{{user.position}}</td>
+      <td>{{user.joinedAt}}</td>
+      <td>{{user.gpa}}</td>
+      <td>{{user.faculty}}</td>
+      <td>
+        <div>
+          <fa-icon [icon]="userEditIcon" class="edit-icon"></fa-icon>
+          <fa-icon [icon]="userDeleteIcon" class="delete-icon"></fa-icon>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

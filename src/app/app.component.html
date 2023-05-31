@@ -56,14 +56,14 @@
         <span>Profile</span>
       </a>
     </li>
-    <li>
+    <li *ngIf="user.role === 'admin'">
       <a [routerLink]="['/settings']">
         <mat-icon>settings</mat-icon>
         <span>Settings</span>
       </a>
     </li>
     <li>
-      <a [routerLink]="['/settings']">
+      <a [routerLink]="['/login']" (click)="logout()">
         <mat-icon>power_settings_new</mat-icon>
         <span>Logout</span>
       </a>

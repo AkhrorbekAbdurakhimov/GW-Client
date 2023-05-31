@@ -80,7 +80,7 @@ ul li a {
   margin-bottom: 15px;
 }
 
-ul li a:hover {
+ul li a:hover, .profile-modal button:hover {
   color: #a5a5a5;
   transition: 0.25s all ease;
 }
