@@ -5,6 +5,7 @@ import { Theme } from '../models/theme.model';
 import { Verify } from '../models/verify.model';
 
 import { GwService } from './gw.service';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -55,8 +56,8 @@ export class SharedService {
     this.isWarningSource.next(status)
   }
 
-  getThemesById() {
-    this.gwService.getThemesById().subscribe({
+  getThemesById(user: User) {
+    this.gwService.getThemesById(user).subscribe({
       next: (data) => {
         this.uThemesSource.next(data)
       }

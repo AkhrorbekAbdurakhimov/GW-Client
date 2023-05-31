@@ -1,9 +1,12 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { GwService } from '../../services/gw.service';
 import { SharedService } from '../../services/shared.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
+
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-add-theme',
@@ -18,11 +21,24 @@ export class AddThemeComponent {
     description: ['', [Validators.required]]
   })
 
+  user: User = {
+    id: 0,
+    username: '',
+    role: '',
+    avatar: '',
+    full_name: '',
+    capacity: 0,
+    created_at: new Date(),
+  };
+
   constructor(
     private fb: FormBuilder,
     private gwService: GwService,
+    private authService: AuthService,
     private sharedService: SharedService,
-  ) {}
+  ) {
+    this.user = this.authService.getUser();
+  }
 
   ngOnInit() {
     this.sharedService
@@ -43,7 +59,7 @@ export class AddThemeComponent {
           this.sharedService.changeToasterMessageStatus(true);
           this.sharedService.changeToasterMessage(data.message);
           this.sharedService.changeAddThemeModalStatus(false);
-          this.sharedService.getThemesById()
+          this.sharedService.getThemesById(this.user);
           setTimeout(() => {
             this.sharedService.changeToasterMessageStatus(false);
           }, 1500)

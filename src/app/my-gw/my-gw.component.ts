@@ -58,7 +58,7 @@ export class MyGwComponent {
       this.isStudent = true;
     }
 
-    this.sharedService.getThemesById()
+    this.sharedService.getThemesById(this.user)
       
     this.sharedService
       .uthemes
@@ -76,7 +76,7 @@ export class MyGwComponent {
   pending(processId: number, status: string) {
     this.gwService.updateProcessStatus(processId, status).subscribe({
       next: data => {
-        this.sharedService.getThemesById()
+        this.sharedService.getThemesById(this.user)
       }
     })
   }

@@ -39,10 +39,9 @@ export class GwService {
       .get<any>(`${environment.apiUrl}/themes/status/list`)
   }
 
-  getThemesById() {
-    console.log();
+  getThemesById(user: User) {
     return this.http
-      .get<any>(`${environment.apiUrl}/themes/list?${this.user.role}Id=${this.user.id}`);
+      .get<any>(`${environment.apiUrl}/themes/list?${user.role}Id=${user.id}`);
   }
 
   addTheme(title: string, description: string, advisorId: number | null) {
