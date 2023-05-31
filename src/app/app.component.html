@@ -5,7 +5,12 @@
       <span class="title">{{title}}</span>
     </div>
     <mat-icon class="notification">notifications_none</mat-icon>
-    <div class="profile-part">
+    <span class="username">{{user.username}}</span>
+    <div class="profile-part" 
+      (click)="isProfileModal = !isProfileModal"  
+      appClickOutside 
+      (appClickOutside)="isProfileModal = false"
+    >
       <img src="./../assets/avatar.png" alt="profile" class="profile">
     </div>
   </header>
@@ -42,6 +47,28 @@
       <router-outlet></router-outlet>
     </div>
   </body>
+</div>
+<div class="profile-modal" *ngIf="isProfileModal">
+  <ul>
+    <li>
+      <a [routerLink]="['/profile']">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/settings']">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/settings']">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Logout</span>
+      </a>
+    </li>
+  </ul>
 </div>
 <app-toaster-message></app-toaster-message>
 <app-verify-modal></app-verify-modal>

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RoomComponent } from './room/room.component';
 import { MyGwComponent } from './my-gw/my-gw.component';
 import { LoginComponent } from './auth/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'room', component: RoomComponent },
   { path: 'my-gw', component: MyGwComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'main-page', component: MainPageComponent },
   { path: 'workspace', component: WorkspaceComponent },

@@ -5,7 +5,12 @@ export class User {
     public role: string,
     public avatar: string,
     public capacity: number,
-    public full_name: string,
-    public created_at: Date,
+    public fullName: string,
+    public faculty: string,
+    public gpa: number,
+    public skills: string[],
+    public linkedin: string,
+    public position: string,
+    public joinedAt: Date,
   ) {}
 }

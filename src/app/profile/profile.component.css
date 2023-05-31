@@ -1,0 +1,99 @@
+.container {
+  padding: 20px;
+  display: flex;
+}
+
+.first, .second {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.first {
+  width: 20%;
+}
+
+.role {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.second {
+  width: 35%;
+  padding: 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.second p {
+  display: flex;
+}
+
+.label {
+  width: 150px;
+  display: block;
+}
+
+.value {
+  color: rgba(9, 9, 48, 0.76);
+}
+
+.third {
+  width: 45%;
+  padding-left: 20px;
+}
+
+.third p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.third .skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.third span {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1.05px;
+  border: 2px solid #000;
+  margin-right: 15px;
+  color: #c27c13;
+}
+
+.second {
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 100%;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.linkedin {
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.linkedin span {
+  margin-left: 5px;
+}
+
+.change-password-btn {
+  padding: 12.5px 25px;
+  background-color: blue;
+  color: aliceblue;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  letter-spacing: 1.1px;
+}

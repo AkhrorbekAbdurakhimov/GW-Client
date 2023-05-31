@@ -26,10 +26,15 @@ export class VerifyModalComponent {
     username: '',
     role: '',
     avatar: '',
-    full_name: '',
+    fullName: '',
+    faculty: '',
     capacity: 0,
-    created_at: new Date(),
-  }; 
+    gpa: 0,
+    position: '',
+    skills: [],
+    linkedin: '',
+    joinedAt: new Date(),
+  };
 
   constructor(
     private gwService: GwService,
