@@ -21,6 +21,8 @@ export class MainPageComponent {
   isTeacher: boolean = false;
   isStudent: boolean = false;
 
+  defaultURL = './../../assets/avatar.png';
+
   user: User = {
     id: 0,
     username: '',

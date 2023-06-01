@@ -4,7 +4,7 @@ import { faUserPlus, faUserTie, faCalendarDays, faUserPen, faUserMinus } from '@
 
 import { User } from '../models/user.model';
 
-import { GwService } from '../services/gw.service';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-settings',
@@ -18,21 +18,30 @@ export class SettingsComponent {
   userDeleteIcon = faUserMinus;
   joinedDateIcon = faCalendarDays;
 
+  defaultURL = './../../assets/avatar.png';
+
+  message: string = 'Delete User';
+
   users: User[] = [];
 
   constructor(
-    private gwService: GwService
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
-    this.getUsers();
+
+    this.sharedService.getUsers()
+
+    this.sharedService
+      .users
+      .subscribe(data => this.users = data);
   }
 
-  getUsers() {
-    this.gwService.getUsers(0).subscribe({
-      next: data => {
-        this.users = data;
-      }
-    })
+  openAddUserModal() {
+    this.sharedService.changeAddUserModalStatus(true);
+  }
+
+  deleteUser(userId: number) {
+    this.sharedService.changeVerifyModal(true, this.message, userId, 'Delete User');
   }
 }

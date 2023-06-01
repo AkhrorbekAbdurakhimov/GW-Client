@@ -13,9 +13,11 @@ import { User } from '../models/user.model';
 export class SharedService {
 
   private addThemeModalStatusSource = new BehaviorSubject<boolean>(false);
+  private addUserModalStatusSource = new BehaviorSubject<boolean>(false);
   private verifyModalSource = new BehaviorSubject<Verify>({ status: false, message: '', id: 0, type: '' });
   private uThemesSource = new BehaviorSubject<Theme[]>([])
   private themesSource = new BehaviorSubject<Theme[]>([])
+  private usersSource = new BehaviorSubject<User[]>([])
 
   // toaster message
   private toasterMessageStatusSource = new BehaviorSubject<boolean>(false);
@@ -23,9 +25,11 @@ export class SharedService {
   private isWarningSource = new BehaviorSubject<boolean>(false);
 
   addThemeModalStatus = this.addThemeModalStatusSource.asObservable();
+  addUserModalStatus = this.addUserModalStatusSource.asObservable();
   verifyModal = this.verifyModalSource.asObservable();
   uthemes = this.uThemesSource.asObservable();
   themes = this.themesSource.asObservable();
+  users = this.usersSource.asObservable();
 
   // toaster message
   toasterMessageStatus = this.toasterMessageStatusSource.asObservable();
@@ -38,6 +42,10 @@ export class SharedService {
 
   changeAddThemeModalStatus(status: boolean) {
     this.addThemeModalStatusSource.next(status);
+  }
+
+  changeAddUserModalStatus(status: boolean) {
+    this.addUserModalStatusSource.next(status);
   }
 
   changeVerifyModal(status: boolean, message: string, id: number, type: string) {
@@ -68,6 +76,14 @@ export class SharedService {
     this.gwService.getThemes(statusId).subscribe({
       next: (data) => {
         this.themesSource.next(data)
+      }
+    })
+  }
+
+  getUsers() {
+    this.gwService.getUsers(0).subscribe({
+      next: data => {
+        this.usersSource.next(data);
       }
     })
   }

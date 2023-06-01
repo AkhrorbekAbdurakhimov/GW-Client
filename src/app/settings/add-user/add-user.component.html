@@ -1,0 +1,89 @@
+<div class="container" [class.active]="addUserModalStatus">
+  <div class="add-user-modal">
+    <header>
+      <span>Add user</span>
+      <mat-icon (click)="closeAddUserModal()">close</mat-icon>
+    </header>
+    <form 
+      class="add-user-form"
+      (ngSubmit)="addUser()"
+      [formGroup]="addUserForm"
+    >
+      <div class="top">
+        <div class="avatar-part" (click)="fileInput.click()">
+          <input class="file" type="file" #fileInput (change)="handleFileInput($event)">
+          <ng-container *ngIf="avatarImage; else placeholder">
+            <img [src]="avatarImage" alt="Avatar" class="avatar">
+          </ng-container>
+          <ng-template #placeholder>
+            <span>Click to Upload Avatar</span>
+          </ng-template>
+        </div>
+        <div class="input-part">
+          <label>
+            <span>Username: </span>
+            <input type="text" formControlName="username" placeholder="Enter username">
+          </label>
+          <label>
+            <span>Password: </span>
+            <div class="mini-wrapper">
+              <input [type]="hide ? 'password' : 'text'" placeholder="························" formControlName="password" class="password">
+				      <mat-icon (click)="hide = !hide" class="visiblity">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <fa-icon [icon]="generateIcon" class="generate-icon" (click)="generate()"></fa-icon>
+            </div>
+          </label>
+          <label>
+            <span>FullName: </span>
+            <input type="text" formControlName="fullName" placeholder="Enter user full name">
+          </label>
+          <label>
+            <span>Position: </span>
+            <input type="text" formControlName="position" placeholder="Enter user position">
+          </label>
+          <div class="radio-wrapper">
+            <label>
+              <input type="radio" name="role" value="admin" formControlName="role">
+              <span>Admin</span>
+            </label>
+            <label>
+              <input type="radio" name="role" value="teacher" formControlName="role">
+              <span>Teacher</span>
+            </label>
+            <label>
+              <input type="radio" name="role" value="student" formControlName="role" [checked]="true">
+              <span>Student</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="footer-wrapper" *ngIf="addUserForm.value.role === 'student'">
+        <label>
+          <span>GPA: </span>
+          <input type="number" max="5.0" formControlName="gpa">
+        </label>
+        <label>
+          <span>Faculty: </span>
+          <input type="text" formControlName="faculty" placeholder="Enter user faculty">
+        </label>
+        <label>
+          <span>Linkedin: </span>
+          <input type="text" formControlName="linkedin" placeholder="Enter user linkedin url">
+        </label>
+      </div>
+      <label class="skills" *ngIf="addUserForm.value.role === 'student'">
+        <span>Choose skills: </span>
+        <select multiple formControlName="skills">
+          <option *ngFor="let skill of skills" [value]="skill.id">{{skill.title}}</option>
+        </select>
+      </label>
+      <label class="capacity" *ngIf="addUserForm.value.role === 'teacher'">
+        <span>Capacity: </span>
+        <input type="number" formControlName="capacity" placeholder="count of supervisor's students">
+      </label>
+      <div class="buttons-wrapper">
+        <button class="cancel-btn" type="cancel" (click)="closeAddUserModal()">Cancel</button>
+        <button class="save-btn" [class.disabled]="!addUserForm.valid" [disabled]="!addUserForm.valid" type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

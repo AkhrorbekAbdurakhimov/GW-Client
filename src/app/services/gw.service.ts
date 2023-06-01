@@ -49,12 +49,17 @@ export class GwService {
       .get<any>(`${environment.apiUrl}/themes/status/list`)
   }
 
-  getThemesById(user: User) {
+  getSkillsList () {
+    return this.http
+      .get<any>(`${environment.apiUrl}/admin/skills`)
+  }
+
+  getThemesById (user: User) {
     return this.http
       .get<any>(`${environment.apiUrl}/themes/list?${user.role}Id=${user.id}`);
   }
 
-  addTheme(title: string, description: string, advisorId: number | null) {
+  addTheme (title: string, description: string, advisorId: number | null) {
     const payload: { title: string, description: string, advisorId?: number } = { title, description };
     if (advisorId) {
       payload.advisorId = advisorId
@@ -63,12 +68,46 @@ export class GwService {
       .post<any>(`${environment.apiUrl}/themes/`, payload)
   }
 
-  deleteTheme(themeId: number) {
+  deleteUser (userId: number) {
+    return this.http
+      .delete<any>(`${environment.apiUrl}/admin/user/${userId}`);
+  }
+
+  addUser (
+    username: string, 
+    password: string, 
+    fullName: string, 
+    position: string | null, 
+    avatar: string | null, 
+    role: string,
+    gpa: number | null, 
+    faculty: string | null, 
+    skills: any, 
+    capacity: number | null, 
+    linkedin: string | null
+  ) {
+    return this.http
+      .post<any>(`${environment.apiUrl}/admin/register`, {
+        username,
+        password,
+        fullName,
+        position,
+        avatar,
+        role, 
+        gpa,
+        faculty,
+        skills,
+        capacity,
+        linkedin
+      })
+  }
+
+  deleteTheme (themeId: number) {
     return this.http
       .delete<any>(`${environment.apiUrl}/themes/${themeId}`);
   }
 
-  updateProcessStatus(processId: number, status: string) {
+  updateProcessStatus (processId: number, status: string) {
     return this.http
       .patch<any>(`${environment.apiUrl}/themes/status/${processId}`, {
         status

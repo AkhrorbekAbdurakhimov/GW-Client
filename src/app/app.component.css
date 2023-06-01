@@ -96,5 +96,6 @@ ul li a mat-icon {
   right: 20px;
   background-color: #1F1F1F;
   padding: 5px 20px;
+  z-index: 200;
   font-size: 18px;
 }

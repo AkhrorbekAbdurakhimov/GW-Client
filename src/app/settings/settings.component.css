@@ -1,5 +1,7 @@
 .container {
   padding: 20px;
+  overflow: scroll;
+  height: 100%;
 }
 
 .title {
@@ -25,13 +27,14 @@
 
 table {
   width: 100%;
+  height: 100%;
   border-collapse: collapse;
   border-radius: 5px;
   border-bottom: 2px solid #000;
 }
 
 tr:first-child {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   letter-spacing: 1.04px;
 }
@@ -55,6 +58,7 @@ tr td {
 
 td {
   border-top: 2px solid #000;
+  font-size: 14px;
 }
 
 tr:not(:first-child) td {
@@ -81,12 +85,18 @@ tr:not(:first-child) td:last-child div {
   border-radius: 50%;
 }
 
-.edit-icon {
+.btn {
+  border: none;
+  background: none;
+  font-size: 25px;
+}
+
+.edit-btn {
   color:blue;
   cursor: pointer;
 }
 
-.delete-icon {
+.delete-btn {
   color: red;
   margin-left: 10px;
   cursor: pointer;

@@ -83,5 +83,18 @@ export class VerifyModalComponent {
         }
       })
     }
+    if (this.details.type === 'Delete User') {
+      this.gwService.deleteUser(this.details.id).subscribe({
+        next: data => {
+          this.sharedService.changeVerifyModal(false, '', 0, '');
+          this.sharedService.changeToasterMessageStatus(true);
+          this.sharedService.changeToasterMessage(data.message);
+          this.sharedService.getUsers();
+          setTimeout(() => {
+            this.sharedService.changeToasterMessageStatus(false);
+          }, 1500)
+        }
+      })
+    }
   }
 }
