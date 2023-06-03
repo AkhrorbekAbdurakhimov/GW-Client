@@ -75,6 +75,14 @@ export class MainPageComponent {
     })
   }
 
+  openUserInfoModal(userId: number) {
+    this.gwService.getUser(userId).subscribe({
+      next: data => {
+        this.sharedService.changeUserInfoModal(data);
+      }
+    })
+  }
+
   filterThemes(target: EventTarget | null) {
     const selected = (target as HTMLSelectElement).value;
     this.sharedService.getThemes(Number(selected));

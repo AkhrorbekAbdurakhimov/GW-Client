@@ -1,0 +1,46 @@
+<div class="container" [class.active]="user.id">
+  <div class="info-modal">
+    <header>
+      <span>User Info</span>
+      <mat-icon (click)="closeUserInfoModal()">close</mat-icon>
+    </header>
+    <div class="wrapper">
+      <div class="second">
+        <p class="username">
+          <span class="label">Username: </span>
+          <span class="value">{{user.username}}</span>
+        </p>
+        <p class="fish">
+          <span class="label">FullName: </span>
+          <span class="value">{{user.fullName}}</span> 
+        </p>
+        <p class="faculty" *ngIf="user.role === 'student'">
+          <span class="label">Faculty: </span>
+          <span class="value">{{user.faculty}}</span>
+        </p>
+        <p class="gpa" *ngIf="user.role === 'student'">
+          <span class="label">Student GPA:</span>
+          <span class="value">{{user.gpa}}/5.0</span> 
+        </p>
+        <p class="position" *ngIf="['student', 'teacher'].includes(user.role)">
+          <span class="label">User Position: </span>
+          <span class="value">{{user.position}}</span>
+        </p>
+        <p>
+          <span class="label">Joined At: </span>
+          <span class="value">{{user.joinedAt}}</span>
+        </p>
+        <a *ngIf="user.role === 'student'" [href]="user.linkedin" class="linkedin">
+          <fa-icon [icon]="linkedinIcon"></fa-icon>
+          <span>Student linkedin account</span>
+        </a>
+      </div>
+      <div class="third" *ngIf="user.role === 'student'">
+        <p>Student Skills: </p>
+        <div class="skills" *ngIf="user.role === 'student'" class="skills">
+          <span *ngFor="let skill of user.skills">{{skill}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

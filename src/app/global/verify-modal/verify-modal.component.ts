@@ -55,7 +55,6 @@ export class VerifyModalComponent {
   }
 
   verify() {
-    console.log(this.details);
     if (this.details.type === 'Delete') {
       this.gwService.deleteTheme(this.details.id).subscribe({
         next: data => {

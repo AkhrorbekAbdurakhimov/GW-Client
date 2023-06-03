@@ -13,8 +13,27 @@ import { User } from '../models/user.model';
 export class SharedService {
 
   private addThemeModalStatusSource = new BehaviorSubject<boolean>(false);
+  private userInfoModalStatusSource = new BehaviorSubject<User>({
+    id: 0,
+    username: '',
+    role: '',
+    avatar: '',
+    fullName: '',
+    faculty: '',
+    capacity: 0,
+    gpa: 0,
+    position: '',
+    skills: [],
+    linkedin: '',
+    joinedAt: new Date(),
+  });
   private addUserModalStatusSource = new BehaviorSubject<boolean>(false);
-  private verifyModalSource = new BehaviorSubject<Verify>({ status: false, message: '', id: 0, type: '' });
+  private verifyModalSource = new BehaviorSubject<Verify>({ 
+    status: false, 
+    message: '', 
+    id: 0, 
+    type: '' 
+  });
   private uThemesSource = new BehaviorSubject<Theme[]>([])
   private themesSource = new BehaviorSubject<Theme[]>([])
   private usersSource = new BehaviorSubject<User[]>([])
@@ -26,6 +45,7 @@ export class SharedService {
 
   addThemeModalStatus = this.addThemeModalStatusSource.asObservable();
   addUserModalStatus = this.addUserModalStatusSource.asObservable();
+  userInfoModalStatus = this.userInfoModalStatusSource.asObservable();
   verifyModal = this.verifyModalSource.asObservable();
   uthemes = this.uThemesSource.asObservable();
   themes = this.themesSource.asObservable();
@@ -50,6 +70,10 @@ export class SharedService {
 
   changeVerifyModal(status: boolean, message: string, id: number, type: string) {
     this.verifyModalSource.next({status, message, id, type})
+  }
+
+  changeUserInfoModal(info: User) {
+    this.userInfoModalStatusSource.next(info)
   }
 
   changeToasterMessageStatus(status: boolean) {

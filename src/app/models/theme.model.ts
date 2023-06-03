@@ -8,7 +8,9 @@ export class Theme {
     public status: string,
     public studentId: number,
     public studentFullName: string,
+    public studentAvatar: string,
     public advisorId: number,
-    public advisorFullName: string
+    public advisorFullName: string,
+    public advisorAvatar: string
   ) {}
 }

@@ -34,6 +34,11 @@ export class GwService {
     this.user = this.authService.getUser();
   }
 
+  getUser (userId: number) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/admin/user/${userId}`)
+  }
+
   getUsers (roleId: number) {
     return this.http
       .get<any>(`${environment.apiUrl}/admin/users/${roleId}`)

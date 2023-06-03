@@ -24,6 +24,7 @@ import { VerifyModalComponent } from './global/verify-modal/verify-modal.compone
 import { ToasterMessageComponent } from './global/toaster-message/toaster-message.component';
 
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { InfoComponent } from './global/info/info.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     VerifyModalComponent,
     ToasterMessageComponent,
     ClickOutsideDirective,
+    InfoComponent,
   ],
   imports: [
     MyGwModule,
