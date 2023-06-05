@@ -33,6 +33,7 @@ export class VerifyModalComponent {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
 

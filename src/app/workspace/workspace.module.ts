@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { WorkspaceComponent } from './workspace.component';
 
@@ -10,7 +11,8 @@ import { WorkspaceComponent } from './workspace.component';
   ],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ]
 })
 export class WorkspaceModule { }

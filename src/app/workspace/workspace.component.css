@@ -1,6 +1,8 @@
 .container {
   padding: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  overflow: scroll;
 }
 
 .date {
@@ -44,6 +46,28 @@ tr:first-child {
 tr td {
   border: 2px solid #000;
   padding: 5px;
+  vertical-align: top;
+}
+
+tr td ul {
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  margin-bottom: 10px;
+}
+
+tr td ul li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.has {
+  height: 35px;
+}
+
+tr td ul li:last-child {
+  margin-bottom: 0px;
 }
 
 tr td:first-child {
@@ -52,22 +76,38 @@ tr td:first-child {
 
 tr td:nth-child(1), tr td:nth-child(2) {
   font-weight: bold;
+  vertical-align: inherit;
 }
 
 tr td:nth-child(2) {
-  width: 10%;
+  width: 7%;
+  vertical-align: inherit;
 }
 
 tr td:nth-child(3) {
-  width: 15%;
+  width: 28%;
+}
+
+input[type='text'], input[type='number'] {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #373737;
+  width: 100%;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px;
+  background-color: #F1EEEE;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.182);
 }
 
 tr td:nth-child(4) {
-  width: 5%;
+  width: 2%;
 }
 
 tr td:nth-child(5) {
-  width: 10%;
+  width: 13%;
 }
 
 tr td:nth-child(5) {
@@ -75,7 +115,7 @@ tr td:nth-child(5) {
 }
 
 tr td:nth-child(6) {
-  width: 30%;
+  width: 20%;
 }
 
 tr td:nth-child(7) {
@@ -91,4 +131,49 @@ tr td:nth-child(7) {
 .file mat-icon {
   height: 100%;
   font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.btn {
+  padding: 5px 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1.05px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.accepted {
+  background-color: green;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.high {
+  font-size: 18px;
+  font-weight: bold;
+  color: green;
+}
+
+.buttons-wrapper {
+  display: flex;
+}
+
+.declined {
+  background-color: red;
+  cursor: pointer;
+}
+
+.send {
+  background-color: rgb(8, 20, 128);
+  cursor: pointer;
+}
+
+.requested {
+  background-color: rgba(8, 20, 128, 0.479);
+  cursor: not-allowed;
 }

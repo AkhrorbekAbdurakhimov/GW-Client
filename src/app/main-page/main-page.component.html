@@ -30,10 +30,11 @@
         <p class="not-attached" *ngIf="!theme.studentFullName">No attached user</p>
         <button 
          class="btn"
-         [title]="isStudent && theme.status === 'not-selected' ? 'select this theme' : ''"
-         [disabled]="['initialized', 'pending', 'accepted', 'declined'].includes(theme.status) || isTeacher"
-         [class.select]="theme.status === 'not-selected' && isStudent"
-         [class.not-selected]="theme.status === 'not-selected' && isTeacher"
+         [title]="isStudent && theme.status === 'not-selected' && !hasTheme ? 'select this theme' : ''"
+         [disabled]="hasTheme || isTeacher || isAdmin || ['initialized', 'pending', 'accepted', 'declined'].includes(theme.status)"
+         [class.select]="theme.status === 'not-selected' && isStudent && !hasTheme"
+         [class.hasTheme]="theme.status === 'not-selected' && isStudent && hasTheme"
+         [class.not-selected]="(theme.status === 'not-selected' && isTeacher) || (theme.status === 'not-selected' && isAdmin)"
          [class.initialized]="theme.status === 'initialized'"
          [class.pending]="theme.status === 'pending'"
          [class.accepted]="theme.status === 'accepted'"

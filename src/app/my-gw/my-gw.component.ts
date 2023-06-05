@@ -32,6 +32,7 @@ export class MyGwComponent {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
   themes: Theme[] = [];
@@ -79,14 +80,18 @@ export class MyGwComponent {
   }
 
   pending(processId: number, status: string) {
-    this.gwService.updateProcessStatus(processId, status).subscribe({
-      next: data => {
-        this.sharedService.getThemesById(this.user)
-      }
-    })
+    if (this.user.role === 'teacher') {
+      this.gwService.updateProcessStatus(processId, status).subscribe({
+        next: data => {
+          this.sharedService.getThemesById(this.user)
+        }
+      })
+    }
   }
 
-  process() {
-    this.router.navigateByUrl("/workspace")
+  process(userId: number, title: string, description: string) {
+    this.router.navigate([`/workspace/${userId}`], {
+      queryParams: { title, description }
+    })
   }
 }

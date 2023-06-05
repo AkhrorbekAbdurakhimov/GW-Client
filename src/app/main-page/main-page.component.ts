@@ -20,6 +20,8 @@ export class MainPageComponent {
 
   isTeacher: boolean = false;
   isStudent: boolean = false;
+  isAdmin: boolean = false;
+  hasTheme: boolean = false;
 
   defaultURL = './../../assets/avatar.png';
 
@@ -35,6 +37,7 @@ export class MainPageComponent {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
 
@@ -42,17 +45,21 @@ export class MainPageComponent {
     private gwService: GwService,
     private authService: AuthService,
     private sharedService: SharedService,
-  ) {
-    this.user = this.authService.getUser();
-  }
+  ) {}
 
   ngOnInit() {
+
+    this.user = this.authService.getUser();
 
     if (this.user.role === 'teacher') {
       this.isTeacher = true; 
     } else if (this.user.role === 'student') {
       this.isStudent = true;
+    } else if (this.user.role === 'admin') {
+      this.isAdmin = true;
     }
+
+    this.hasTheme = this.user.hasTheme;
 
     this.sharedService.getThemes(0);
 

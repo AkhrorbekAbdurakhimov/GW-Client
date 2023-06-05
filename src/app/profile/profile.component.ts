@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 
 import { User } from '../models/user.model';
 
-import { AuthService } from '../auth/services/auth.service';
-
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-profile',
@@ -27,14 +26,17 @@ export class ProfileComponent {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
 
   constructor(
-    private authService: AuthService
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
-    this.user = this.authService.getUser();
+    this.sharedService
+      .user
+      .subscribe(user => this.user = user);
   }
 }

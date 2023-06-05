@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'main-page', component: MainPageComponent },
-  { path: 'workspace', component: WorkspaceComponent },
+  { path: 'workspace/:userId', component: WorkspaceComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '**', redirectTo: '/not-found' }
 ];

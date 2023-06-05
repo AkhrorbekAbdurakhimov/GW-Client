@@ -25,6 +25,7 @@ export class InfoComponent {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
 
@@ -51,6 +52,7 @@ export class InfoComponent {
       position: '',
       skills: [],
       linkedin: '',
+      hasTheme: false,
       joinedAt: new Date(),
     })
   }

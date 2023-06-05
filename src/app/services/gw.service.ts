@@ -24,6 +24,7 @@ export class GwService {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
 
@@ -123,6 +124,26 @@ export class GwService {
     return this.http
       .post<any>(`${environment.apiUrl}/themes/bind`, {
         processId
+      });
+  }
+
+  getPerforming (userId: number) {
+    return this.http
+      .get<any>(`${environment.apiUrl}/themes/performing/${userId}`);
+  }
+
+  sendRequest (formData: any) {
+    return this.http
+      .post<any>(`${environment.apiUrl}/themes/performing/send-request`, formData);
+  }
+
+  receiveRequest (requestId: number, status: string, done: string, comment: string) {
+    return this.http
+      .post<any>(`${environment.apiUrl}/themes/performing/recieve-request`, {
+        requestId,
+        status,
+        done,
+        comment
       });
   }
 }

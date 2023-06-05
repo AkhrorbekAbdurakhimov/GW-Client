@@ -178,6 +178,11 @@ ul li:nth-child(4n) {
   background-color: rgba(3, 19, 63);
 }
 
+.hasTheme {
+  background-color: rgba(3, 19, 63, 0.5);
+  cursor: not-allowed;
+}
+
 .not-selected {
   background-color: rgba(3, 19, 63, 0.5);
   cursor: not-allowed;

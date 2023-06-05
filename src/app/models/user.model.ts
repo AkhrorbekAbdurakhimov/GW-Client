@@ -11,6 +11,7 @@ export class User {
     public skills: string[],
     public linkedin: string,
     public position: string,
+    public hasTheme: boolean,
     public joinedAt: Date,
   ) {}
 }

@@ -9,7 +9,7 @@
     </button>
   </header>
   <body>
-    <ul *ngIf="isTeacher" class="my-list">
+    <ul class="my-list">
       <li *ngFor="let theme of themes">
         <div class="icon-wrapper">
           <mat-icon class="edit">edit</mat-icon>
@@ -39,7 +39,7 @@
           </div>
           <button *ngIf="theme.status === 'pending'" class="btn accept" (click)="pending(theme.processId, 'accepted')">accept</button>
           <button *ngIf="theme.status === 'pending'" class="btn decline" (click)="pending(theme.processId, 'declined')">decline</button>
-          <button *ngIf="theme.status === 'accepted'" class="btn process" (click)="process()">process</button>
+          <button *ngIf="theme.status === 'accepted'" class="btn process" (click)="process(theme.studentId, theme.title, theme.description)">process</button>
         </div>
         <div class="upper" [class.initialized]="theme.status === 'initialized'" (click)="pending(theme.processId, 'pending')"></div>
       </li>

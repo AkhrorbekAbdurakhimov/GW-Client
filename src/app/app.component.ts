@@ -2,6 +2,7 @@ import { Component  } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { AuthService } from './auth/services/auth.service';
+import { SharedService } from './services/shared.service';
 
 import { User } from './models/user.model';
 import { Theme } from './models/theme.model';
@@ -30,6 +31,7 @@ export class AppComponent {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
 
@@ -37,10 +39,9 @@ export class AppComponent {
   
   constructor(
     private router: Router,
-    private authService: AuthService
-  ) { 
-    this.user = this.authService.getUser();
-  }
+    private authService: AuthService,
+    private sharedService: SharedService,
+  ) { }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -48,6 +49,11 @@ export class AppComponent {
         this.currentRoute = event.url;
       }
     });
+
+    this.sharedService
+      .user
+      .subscribe(user => this.user = user);
+
   }
 
   showSidebarAndHeader(): boolean {

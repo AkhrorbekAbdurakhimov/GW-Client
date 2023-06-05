@@ -6,6 +6,7 @@ import { Verify } from '../models/verify.model';
 
 import { GwService } from './gw.service';
 import { User } from '../models/user.model';
+import { AuthService } from '../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class SharedService {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   });
   private addUserModalStatusSource = new BehaviorSubject<boolean>(false);
@@ -37,6 +39,21 @@ export class SharedService {
   private uThemesSource = new BehaviorSubject<Theme[]>([])
   private themesSource = new BehaviorSubject<Theme[]>([])
   private usersSource = new BehaviorSubject<User[]>([])
+  private userSource = new BehaviorSubject<User>({
+    id: 0,
+    username: '',
+    role: '',
+    avatar: '',
+    fullName: '',
+    faculty: '',
+    capacity: 0,
+    gpa: 0,
+    position: '',
+    skills: [],
+    linkedin: '',
+    hasTheme: false,
+    joinedAt: new Date(),
+  })
 
   // toaster message
   private toasterMessageStatusSource = new BehaviorSubject<boolean>(false);
@@ -50,6 +67,7 @@ export class SharedService {
   uthemes = this.uThemesSource.asObservable();
   themes = this.themesSource.asObservable();
   users = this.usersSource.asObservable();
+  user = this.userSource.asObservable();
 
   // toaster message
   toasterMessageStatus = this.toasterMessageStatusSource.asObservable();
@@ -57,8 +75,11 @@ export class SharedService {
   isWarning = this.isWarningSource.asObservable();
 
   constructor(
-    public gwService: GwService
-  ) { }
+    public gwService: GwService,
+    public authService: AuthService
+  ) { 
+    this.userSource.next(this.authService.getUser())
+  }
 
   changeAddThemeModalStatus(status: boolean) {
     this.addThemeModalStatusSource.next(status);
@@ -74,6 +95,10 @@ export class SharedService {
 
   changeUserInfoModal(info: User) {
     this.userInfoModalStatusSource.next(info)
+  }
+
+  changeUser(user: User) {
+    this.userSource.next(user)
   }
 
   changeToasterMessageStatus(status: boolean) {

@@ -33,6 +33,7 @@ export class AddThemeComponent {
     position: '',
     skills: [],
     linkedin: '',
+    hasTheme: false,
     joinedAt: new Date(),
   };
 

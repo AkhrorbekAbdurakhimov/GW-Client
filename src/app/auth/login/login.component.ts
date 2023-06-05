@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -21,12 +22,14 @@ export class LoginComponent {
   constructor (
     private router: Router,
     private fb: FormBuilder, 
-    private authService: AuthService
+    private authService: AuthService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
     if (this.authService.getToken()) {
       this.router.navigate(['/main-page']);
+      this.sharedService.changeUser(this.authService.getUser())
     }
   }
 
@@ -39,6 +42,7 @@ export class LoginComponent {
           this.message = data.message;
           setTimeout(() => {
             this.router.navigateByUrl('/main-page')
+            this.sharedService.changeUser(this.authService.getUser())
           }, 500)
         },
         error: error => {
