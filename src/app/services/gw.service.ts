@@ -146,4 +146,16 @@ export class GwService {
         comment
       });
   }
+
+  getNews () {
+    return this.http
+      .get<any>(`${environment.apiUrl}/themes/news`);
+  } 
+
+  addNews (body: string) {
+    return this.http
+      .post<any>(`${environment.apiUrl}/themes/news`, {
+        body
+      });
+  }
 }

@@ -1,0 +1,82 @@
+.container {
+  padding: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+ul li {
+  font-size: 20px;
+  width: 30%;
+  padding: 5px;
+  margin-bottom: 30px;
+  margin-right: 3%;
+  line-height: 28px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-left: 1px solid #000;
+  padding-left: 15px
+}
+
+ul li span {
+  color: #777373;
+  text-indent: 20px;
+}
+
+.time {
+  text-align: right;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
+
+header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+header button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 20px;
+  display: block;
+  border: none;
+  background: none;
+}
+
+header button mat-icon {
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+}
+
+
+header .disabled {
+  cursor: not-allowed;
+  color: #333232a4
+}
+
+.icon-wrapper {
+  display: flex;
+  width: 60px;
+  right: 20px;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-bottom: 5px;
+}
+
+.edit {
+  color: green;
+  cursor: pointer;
+}
+
+.delete {
+  color: red;
+  cursor: pointer;
+}

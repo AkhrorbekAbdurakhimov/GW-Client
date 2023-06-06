@@ -1,0 +1,21 @@
+<div class="container" [class.active]="addNewsModalStatus">
+  <div class="add-news-modal">
+    <header>
+      <span>Add News</span>
+      <mat-icon (click)="closeAddNewsModal()">close</mat-icon>
+    </header>
+    <form 
+      class="add-news-form"
+      (ngSubmit)="addNews()"
+      [formGroup]="addNewsForm"
+    >
+      <label>
+        <textarea formControlName="body"></textarea>
+      </label>
+      <div class="buttons-wrapper">
+        <button class="cancel-btn" type="cancel" (click)="closeAddNewsModal()">Cancel</button>
+        <button class="save-btn" type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

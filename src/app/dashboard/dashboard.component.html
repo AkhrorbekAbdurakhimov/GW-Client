@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+<div class="container">
+  <header *ngIf="isAdmin">
+    <button (click)="openAddNewsModal()">
+      <mat-icon>add_box</mat-icon> 
+    </button>
+  </header>
+  <ul>
+    <li *ngFor="let info of news">
+      <div class="icon-wrapper">
+        <mat-icon class="edit">edit</mat-icon>
+        <mat-icon class="delete">delete</mat-icon>
+      </div>
+      <span>{{info.body}}</span>
+      <p class="time">{{info.created_datetime}}</p>
+    </li>
+  </ul>
+</div>
+<app-add-news></app-add-news>

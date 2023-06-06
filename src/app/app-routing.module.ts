@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'main-page', component: MainPageComponent },
   { path: 'workspace/:userId', component: WorkspaceComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found' }
 ];
 

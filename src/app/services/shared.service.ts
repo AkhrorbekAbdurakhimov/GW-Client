@@ -1,11 +1,12 @@
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
+import { News } from '../models/news';
+import { User } from '../models/user.model';
 import { Theme } from '../models/theme.model';
 import { Verify } from '../models/verify.model';
 
 import { GwService } from './gw.service';
-import { User } from '../models/user.model';
 import { AuthService } from '../auth/services/auth.service';
 
 @Injectable({
@@ -13,6 +14,7 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class SharedService {
 
+  private addNewsModalStatusSource = new BehaviorSubject<boolean>(false);
   private addThemeModalStatusSource = new BehaviorSubject<boolean>(false);
   private userInfoModalStatusSource = new BehaviorSubject<User>({
     id: 0,
@@ -54,12 +56,14 @@ export class SharedService {
     hasTheme: false,
     joinedAt: new Date(),
   })
+  private newsSource = new BehaviorSubject<News[]>([])
 
   // toaster message
   private toasterMessageStatusSource = new BehaviorSubject<boolean>(false);
   private toasterMessageSource = new BehaviorSubject<string>('');
   private isWarningSource = new BehaviorSubject<boolean>(false);
 
+  addNewsModalStatus = this.addNewsModalStatusSource.asObservable();
   addThemeModalStatus = this.addThemeModalStatusSource.asObservable();
   addUserModalStatus = this.addUserModalStatusSource.asObservable();
   userInfoModalStatus = this.userInfoModalStatusSource.asObservable();
@@ -68,6 +72,7 @@ export class SharedService {
   themes = this.themesSource.asObservable();
   users = this.usersSource.asObservable();
   user = this.userSource.asObservable();
+  news = this.newsSource.asObservable();
 
   // toaster message
   toasterMessageStatus = this.toasterMessageStatusSource.asObservable();
@@ -83,6 +88,10 @@ export class SharedService {
 
   changeAddThemeModalStatus(status: boolean) {
     this.addThemeModalStatusSource.next(status);
+  }
+
+  changeAddNewsModalStatus(status: boolean) {
+    this.addNewsModalStatusSource.next(status);
   }
 
   changeAddUserModalStatus(status: boolean) {
@@ -133,6 +142,14 @@ export class SharedService {
     this.gwService.getUsers(0).subscribe({
       next: data => {
         this.usersSource.next(data);
+      }
+    })
+  }
+
+  getNews () {
+    this.gwService.getNews().subscribe({
+      next: data => {
+        this.newsSource.next(data);
       }
     })
   }

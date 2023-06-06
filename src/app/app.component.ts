@@ -57,7 +57,7 @@ export class AppComponent {
   }
 
   showSidebarAndHeader(): boolean {
-    return this.currentRoute !== '/not-found' && this.currentRoute !== '/login';
+    return this.currentRoute !== '/not-found' && this.currentRoute !== '/login' && this.currentRoute !== '/';
   }
 
   logout() {

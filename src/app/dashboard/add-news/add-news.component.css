@@ -1,0 +1,107 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.433);
+  z-index: 101;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-news-modal {
+  z-index: 11;
+  width: 500px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+header span {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  color: #373737;
+}
+
+header mat-icon {
+  margin-left: auto;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.active {
+  display: flex;
+}
+
+.add-news-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+label {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #373737;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+label span {
+  margin-bottom: 5px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #373737;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px;
+  background-color: #F1EEEE;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.182);
+}
+
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.buttons-wrapper button {
+  font-weight: 600;
+  border: none;
+  padding: 8px 15px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.save-btn {
+  margin-left: 20px;
+  background-color: green;
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: rgb(0, 128, 0, 0.5);
+}
+
+.cancel-btn {
+  background-color: red;
+}
